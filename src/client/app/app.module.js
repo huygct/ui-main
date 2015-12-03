@@ -3,6 +3,7 @@
 
     angular.module('app', [
         'ngMaterial',
+        'ui.bootstrap',
         'app.core',
         'app.widgets',
         'app.admin',
