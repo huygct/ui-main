@@ -7,6 +7,7 @@
         'app.core',
         'app.widgets',
         'app.admin',
+        'app.demo',
         'app.dashboard',
         'app.layout'
     ]);

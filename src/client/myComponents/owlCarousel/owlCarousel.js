@@ -3,45 +3,45 @@
 
   angular
     .module('app.layout')
-    .directive('owlCarousel', htTopNav);
+    .directive('owlCarousel', owlCarousel)
+    .directive('owlCarouselItem', owlCarouselItem);
 
   /* @ngInject */
-  function htTopNav () {
-    var directive = {
-      bindToController: true,
-      controller: TopNavController,
-      controllerAs: 'vm',
-      restrict: 'EA',
-      scope: {
-        'navline': '='
-      },
-      templateUrl: 'app/layout/ht-top-nav.html'
+  function owlCarousel () {
+    return {
+      transclude: false,
+      link: linkFunc,
+      restrict: 'EA'
     };
 
-    /* @ngInject */
-    TopNavController.$inject = ['$mdDialog'];
-    function TopNavController($mdDialog) {
-      var vm = this;
-
-      var originatorEv;
-
-      this.openMenu = function($mdOpenMenu, ev) {
-        originatorEv = ev;
-        $mdOpenMenu(ev);
-      };
-
-      this.announceClick = function(index) {
-        $mdDialog.show(
-          $mdDialog.alert()
-            .title('You clicked!')
-            .content('You clicked the menu item at index ' + index)
-            .ok('Nice')
-            .targetEvent(originatorEv)
-        );
-        originatorEv = null;
+    function linkFunc(scope) {
+      scope.initCarousel = function(element) {
+        // provide any default options you want
+        var defaultOptions = {
+        };
+        var customOptions = scope.$eval($(element).attr('data-options'));
+        // combine the two options objects
+        for(var key in customOptions) {
+          defaultOptions[key] = customOptions[key];
+        }
+        // init carousel
+        $(element).owlCarousel(defaultOptions);
       };
     }
+  }
 
-    return directive;
+  function owlCarouselItem () {
+    return {
+      transclude: false,
+      link: linkFunc,
+      restrict: 'EA'
+    };
+
+    function linkFunc(scope, element) {
+      // wait for the last item in the ng-repeat then call init
+      if(scope.$last) {
+        scope.initCarousel(element.parent());
+      }
+    }
   }
 })();
