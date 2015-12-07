@@ -18,6 +18,24 @@
       scope.initCarousel = function(element) {
         // provide any default options you want
         var defaultOptions = {
+          loop:true,
+          margin:10,
+          responsiveClass:true,
+          responsive:{
+            0:{
+              items:1,
+              nav:true
+            },
+            600:{
+              items:3,
+              nav:false
+            },
+            1000:{
+              items:5,
+              nav:true,
+              loop:false
+            }
+          }
         };
         var customOptions = scope.$eval($(element).attr('data-options'));
         // combine the two options objects
