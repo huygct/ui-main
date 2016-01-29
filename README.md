@@ -1,11 +1,3 @@
-# uiMain
-
-**Generated from HotTowel Angular**
-
->*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
-
->More details about the styles and patterns used in this app can be found in my [Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide) and my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at [Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
-
 ## Prerequisites
 
 1. Install [Node.js](http://nodejs.org)
@@ -21,8 +13,6 @@
     ```
 
     >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
-
-## Running HotTowel
 
 ### Linting
  - Run code analysis using `gulp vet`. This runs jshint, jscs, and plato.
@@ -262,7 +252,3 @@ The `blocks.router` module contains a routing helper module that assists in addi
     --type=major
     --type=pre
     --ver=1.2.3 // specific version
-
-## License
-
-MIT
